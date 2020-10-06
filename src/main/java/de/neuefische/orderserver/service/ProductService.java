@@ -25,4 +25,8 @@ public class ProductService {
     public Optional<Product> getProductById(String id) {
         return productDb.getById(id);
     }
+
+    public Product addProduct(Product product) {
+        return productDb.addProduct(product);
+    }
 }

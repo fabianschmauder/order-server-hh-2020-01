@@ -39,4 +39,9 @@ public class ProductDb {
         }
         return Optional.empty();
     }
+
+    public Product addProduct(Product product) {
+        this.products.add(product);
+        return product;
+    }
 }

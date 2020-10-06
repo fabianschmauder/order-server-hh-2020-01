@@ -35,4 +35,9 @@ public class ProductController {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "product with id "+ id+" not found");
     }
+
+    @PutMapping
+    public Product addProduct(@RequestBody Product product){
+        return service.addProduct(product);
+    }
 }
