@@ -18,8 +18,8 @@ public class ProductService {
         this.productDb = productDb;
     }
 
-    public List<Product> listProducts() {
-        return productDb.list();
+    public List<Product> searchProducts(String q) {
+        return productDb.search(q);
     }
 
     public Optional<Product> getProductById(String id) {

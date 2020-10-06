@@ -15,8 +15,20 @@ public class ProductDb {
             new Product("tomate", "Tomate")));
 
 
-    public List<Product> list(){
-        return products;
+    public List<Product> search(String q){
+        if(q == null || q.isBlank()){
+            return products;
+        }
+
+        ArrayList<Product> matchingProducts = new ArrayList<>();
+
+        for (Product product : products) {
+            if(product.getName().toLowerCase().contains(q.toLowerCase())){
+                matchingProducts.add(product);
+            }
+        }
+
+        return matchingProducts;
     }
 
     public Optional<Product> getById(String id) {
