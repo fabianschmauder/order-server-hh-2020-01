@@ -21,7 +21,6 @@ public class ProductController {
         this.service = service;
     }
 
-
     @GetMapping
     public List<Product> getAllProducts(@RequestParam(required = false) String q){
         return service.searchProducts(q);
