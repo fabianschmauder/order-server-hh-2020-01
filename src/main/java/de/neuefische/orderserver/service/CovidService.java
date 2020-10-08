@@ -6,7 +6,11 @@ import de.neuefische.orderserver.model.covidapi.CovidApiCountryPerDay;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static de.neuefische.orderserver.service.CovidCalculationUtils.mapCovidDayValues;
 
 @Service
 public class CovidService {
@@ -18,21 +22,9 @@ public class CovidService {
         this.covidApiService = covidApiService;
     }
 
-    public List<ConfirmedPerDay> getConfirmedCases(){
+    public List<ConfirmedPerDay> getConfirmedCases() {
         CovidApiCountryPerDay[] covidValues = this.covidApiService.getCovidApiCountryPerDays();
         return mapCovidDayValues(covidValues);
-    }
-
-
-    private ArrayList<ConfirmedPerDay> mapCovidDayValues(CovidApiCountryPerDay[] covidValues) {
-        ArrayList<ConfirmedPerDay> resultValues = new ArrayList<>();
-        for (CovidApiCountryPerDay covidValue : covidValues) {
-            resultValues.add(new ConfirmedPerDay(
-                    covidValue.getDate(),
-                    covidValue.getConfirmed()
-            ));
-        }
-        return resultValues;
     }
 
 
